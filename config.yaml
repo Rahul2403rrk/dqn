@@ -1,0 +1,74 @@
+settings:
+  num_clients: 100
+  simulation_time: 1000
+  logging: true
+  log_file: simulation.log
+  statistics_params:
+    x:
+      min: 0
+      max: 100
+    y:
+      min: 0
+      max: 100
+    warmup_ratio: 0.1
+    cooldown_ratio: 0.1
+  plotting_params:
+    plotting: true
+    plot_file: output.png
+    plot_file_dpi: 100
+    scatter_size: 10
+    plot_save: true
+    plot_show: false
+  limit_closest_base_stations: 3
+
+slices:
+  - name: eMBB
+    delay_tolerance: 100
+    qos_class: 1
+    bandwidth_guaranteed: 5000000
+    bandwidth_max: 10000000
+    client_weight: 0.5
+
+  - name: URLLC
+    delay_tolerance: 10
+    qos_class: 0
+    bandwidth_guaranteed: 2000000
+    bandwidth_max: 5000000
+    client_weight: 0.3
+
+  - name: mMTC
+    delay_tolerance: 300
+    qos_class: 2
+    bandwidth_guaranteed: 1000000
+    bandwidth_max: 3000000
+    client_weight: 0.2
+
+mobility_patterns:
+  walking:
+    client_weight: 10
+    distribution: normal
+    params: [1, 0.5]
+
+base_stations:
+  - id: 1
+    pk: 1
+    coverage: 1000
+    bandwidth: 20000000
+    slice_ratios:
+      eMBB: 0.5
+      URLLC: 0.3
+      mMTC: 0.2
+
+
+clients:
+  location:
+    x:
+      distribution: uniform
+      params: [0, 100]
+    y:
+      distribution: uniform
+      params: [0, 100]
+  usage_frequency:
+    distribution: normal
+    params: [1, 0.2]
+    divide_scale: 1
