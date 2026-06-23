@@ -3,7 +3,7 @@ import random
 
 from .utils import distance, KDTree
 
-
+//hgjdgcxwjdhgxwkjhxkwsxksxhksxwxhj
 class Client:
     def __init__(self, pk, env, x, y, mobility_pattern,
                  usage_freq,
